@@ -17,7 +17,10 @@ install:
   - go get -u github.com/golang/lint/golint
   - sudo -E apt-get install -y --force-yes slapd time ldap-utils
   - sudo /etc/init.d/slapd stop
-
+  - mkdir -p $HOME/gopath/src/github.com/coreos
+  - cd $HOME/gopath/src/github.com/coreos
+  - mv $HOME/gopath/src/github.com/$TRAVIS_REPO_SLUG .
+  - cd $HOME/gopath/src/github.com/coreos/dex
 
 script:
   - make testall
